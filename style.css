@@ -1,3 +1,32 @@
 body {
     font-family: sans-serif;
+    margin: 0px;
+}
+
+.content-width {
+    margin: 0 auto;
+    width: 700px;
+}
+
+.page-header {
+    background-color: rgb(193, 162, 112);
+    box-shadow: 0px 4px 8px #bfbfbf;
+    color: #fff;
+    margin: 0px;
+    margin-bottom: 60px;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.page-header-logo {
+    font-family: monospace;
+    font-size: 300%;
+}
+
+.page-header-nav {
+    float: right;
+    font-size: 90%;
+    list-style: none;
+    position: relative;
 }
