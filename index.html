@@ -11,10 +11,10 @@
         
         <div class="page-header-background">
             <div class="page-header fixed-width clearfix">
-                <div class="version center-vertically">
+                <div class="version center-content-vertically">
                     v0.0.1
                 </div>
-                <div class="logo center-vertically">
+                <div class="logo center-content-vertically">
                     tchart
                 </div>
             </div>
@@ -25,29 +25,25 @@
                 <article>
                     <header><h1>What is it?</h1></header>
                     <p>
-                        tchart is a command line Ruby gem that generates TikZ code to plot date-based data.
-                        For example, this date-based data:
+                        tchart is a command line program that generates TikZ code to plot date-based data.
+                        For example, this:
                     </p>
-                    <pre><code>
-                        <!-- @tchart overview.jpg -->
-                        Objective-C  | lang | 2006.6 - 2013.7
-                        C++          | lang | 2002 - 2008
-                        C            | lang | 2001 - 2002 | 2005 - 2007
-                        -----------------------------------------------
-                        PostgreSQL   | db   | 2004 - 2006
-                        SQLite       | db   | 2002 - 2007
-                        -----------------------------------------------
-                        OS X         | os   | 2006.6 - 2013.7
-                        Linux        | os   | 2005 - 2010
-                        Windows      | os   | 2001 - 2006.2
-                        -----------------------------------------------
-                        XCode        | tool | 2006.6 - 2013.7
-                        Emacs        | tool | 2005 - 2008
-                        VS           | tool | 2001 - 2004
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart overview.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+-----------------------------------------------
+PostgreSQL   | db   | 2004 - 2006
+SQLite       | db   | 2002 - 2007
+-----------------------------------------------
+OS X         | os   | 2006.6 - 2013.7
+Linux        | os   | 2005 - 2010
+Windows      | os   | 2001 - 2006.2
+-----------------------------------------------
+XCode        | tool | 2006.6 - 2013.7
+Emacs        | tool | 2005 - 2008
+VS           | tool | 2001 - 2004<!-- @end --></code></pre>
                     <p>
-                        results in this chart:
+                        produces this:
                     </p>
                     <figure>
                         <img src="images/overview.jpg" />
@@ -58,20 +54,18 @@
                 <article>
                     <header><h1>Requirements</h1></header>
                     <ul>
-                        <li>Ruby 2</li>
-                        <li>A TeX installation (e.g. MacTeX) to render generarted charts.</li>
+                        <li><a href="https://www.ruby-lang.org">Ruby 2</a></li>
+                        <li>A TeX installation (e.g. <a href="http://tug.org/mactex">MacTeX</a>) to render generated charts.</li>
                     </ul>
                 </article>
             
                 
                 <article>
                     <header><h1>Installation</h1></header>
-                    <pre><code> <!-- Shell -->
-                        $ gem install tchart<br>
-                        ...<br>
-                        $ tchart --version<br>
-                        0.0.1
-                    </code></pre>
+                    <pre><code><!-- Shell -->$ gem install tchart
+...
+$ tchart --version
+0.0.1</code></pre>
                 </article>
                 
                 
@@ -82,63 +76,57 @@
                             <p>
                                 Create an input file, skills.txt, containing some date-based data:
                             </p>
-                            <pre><code>
-                                <!-- @tchart tutorial.jpg -->    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
+                            <pre><code><!-- @tchart tutorial.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
                         </li>
                         
                         <li>
                             <p>
                                 Run tchart to read skills.txt and write generated TikZ code to skills.tikz:
                             </p>
-                            <pre><code> <!-- Shell -->
-                                $ tchart skills.txt skills.tikz
-                            </code></pre>
+                            <pre><code><!-- Shell -->$ tchart skills.txt skills.tikz</code></pre>
                         </li>
                         
                         <li>
                             <p>
-                                The generated TikZ code references a style name we specified in skills.txt ('lang'),
-                                as well as styles for the x axis labels ('xlabel'), the y axis labels ('ylabel'),
-                                and the chart grid lines ('gridline').  Create a TeX document, styles.tikz, that 
-                                defines these styles:
+                                The generated TikZ code references the <code>lang</code> style name we specified 
+                                in skills.txt, as well as the <code>xlabel</code> style for the x axis labels, 
+                                the <code>ylabel</code> style for the y axis labels, and the <code>gridline</code>
+                                style for the chart grid lines.  Create a TeX document, styles.tikz, that defines
+                                these styles:
                             </p>                        
-                            <pre><code> <!-- TeX -->
-                                % Style for x axis labels.
-                                \tikzset{ xlabel/.style = {
-                                  text width = 10.00mm,
-                                  align = center,
-                                  inner sep = 0
-                                }}
-                                
-                                % Style for y axis labels.
-                                \tikzset{ ylabel/.style = {
-                                  minimum height = 4.60mm,
-                                  text width = 24.00mm,
-                                  text depth = 0.5mm,
-                                  align = left,
-                                  inner sep = 0
-                                }}
-                                
-                                % Style for grid lines.
-                                \tikzset{ gridline/.style = {
-                                  draw = black!20
-                                }}
-                                
-                                % Style for programming language ('lang') bars.
-                                \definecolor{lang_color}{rgb}{.10, .32, .68}
-                                \tikzset{ lang/.style = {
-                                  rounded corners = 1mm,
-                                  line width = 0.1pt,
-                                  draw = lang_color,
-                                  top color = lang_color,
-                                  bottom color = lang_color
-                                }}
-                            </code></pre>
+                            <pre><code><!-- TeX -->% Style for x axis labels.
+\tikzset{ xlabel/.style = {
+  text width = 10.00mm,
+  align = center,
+  inner sep = 0
+}}
+
+% Style for y axis labels.
+\tikzset{ ylabel/.style = {
+  minimum height = 4.60mm,
+  text width = 24.00mm,
+  text depth = 0.5mm,
+  align = left,
+  inner sep = 0
+}}
+
+% Style for grid lines.
+\tikzset{ gridline/.style = {
+  draw = black!20
+}}
+
+% Style for programming language ('lang') bars.
+\definecolor{lang_color}{rgb}{.10, .32, .68}
+\tikzset{ lang/.style = {
+  rounded corners = 1mm,
+  line width = 0.1pt,
+  draw = lang_color,
+  top color = lang_color,
+  bottom color = lang_color
+}}</code></pre>
                             <p>                        
                                 See <a href="http://mirrors.ctan.org/graphics/pgf/base/doc/generic/pgf/pgfmanual.pdf">pgfmanual.pdf</a>
                                 for more information on TikZ and styles (e.g. sections 2.8, 12.4.2, and 55.4.4).
@@ -147,27 +135,23 @@
                         
                         <li>
                             <p>
-                                Create a main TeX document, skills.tex, that includes ('\input's) the TikZ library, the 
+                                Create a main TeX document, skills.tex, that includes (<code>\input</code>'s) the TikZ library, the 
                                 styles.tikz file, and the generated skills.tikz file:
                             </p>
-                            <pre><code> <!-- TeX -->
-                                \def\pgfsysdriver{pgfsys-pdftex.def}
-                                \input tikz.tex
-                                \usetikzlibrary{positioning, shapes.misc}
-                                \parindent = 0in
-                                \input styles.tikz
-                                \input skills.tikz
-                                \end
-                            </code></pre>
+                            <pre><code><!-- TeX -->\def\pgfsysdriver{pgfsys-pdftex.def}
+\input tikz.tex
+\usetikzlibrary{positioning, shapes.misc}
+\parindent = 0in
+\input styles.tikz
+\input skills.tikz
+\end</code></pre>
                         </li>
     
                         <li>
                             <p>
                                 Generate a PDF file from skills.tex:
                             </p>
-                            <pre><code> <!-- Shell --> 
-                                $ pdftex -interaction=batchmode skills.tex
-                            </code></pre>
+                            <pre><code><!-- Shell -->$ pdftex -interaction=batchmode skills.tex</code></pre>
                             <p>
                                 <a href="http://www.tug.org/applications/pdftex/">pdftex</a> will generate the file skills.pdf,
                                 which looks like this:
@@ -182,69 +166,63 @@
                 
                 <article>
                     <header><h1>Usage</h1></header>
-                    <pre><code> <!-- Shell -->
-                        $ tchart [ --help | --version | input-data-filename output-tikz-filename ]
-                    </code></pre>
+                    <pre><code><!-- Shell -->$ tchart [ --help | --version | input-data-filename output-tikz-filename ]</code></pre>
                     <p>
-                    <span class="code">--help</span> prints a usage message and exits.  -h can also be used.
+                        <code>--help</code> prints a usage message and exits.  <code>-h</code> can also be used.
                     </p>
                     <p>
-                    <span class="code">--version</span> prints the tchart version and exits.  -v can also be used.
+                        <code>--version</code> prints the tchart version and exits.  <code>-v</code> can also be used.
                     </p>
                     <p>
-                    input-data-filename is the name of a file containing date-based data, and output-tikz-filename
-                    is the name of the a file where generated TikZ code should be written.  If output-tikz-filename
-                    already exists, it will be silently overwritten.  Both file names must be specified.
+                        <code>input-data-filename</code> is the name of a file containing date-based data, and 
+                        <code>output-tikz-filename</code> is the name of the a file where generated TikZ code 
+                        should be written.  If <code>output-tikz-filename</code> already exists, it will be
+                        silently overwritten.  Both file names must be specified.
                     </p>
                     <p>
-                    There are no restrictions on the file names other than those imposed by the operating system.
-                    Although the examples here use .txt and .tikz as the extensions of the input and output files,
-                    you can use any extensions you like (or none at all).
+                        There are no restrictions on the file names other than those imposed by the operating system.
+                        Although the examples in this document use .txt and .tikz as the extensions of the input and
+                        output files, you can use any extensions you like (or none at all).
                     </p>
                     <p>
-                    Examples:
+                        Examples:
                     </p>
-                    <pre><code> <!-- Shell -->
-                        $ tchart --help
-                        Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
-                        
-                        $ tchart -h
-                        Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
-                        
-                        $ tchart --version
-                        1.0.0
-                        
-                        $ tchart skills.txt
-                        Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
-                        
-                        $ tchart skills.txt skills.tikz
-                        $ 
-                    </code></pre>
+                    <pre><code><!-- Shell -->$ tchart --help
+Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
+
+$ tchart -h
+Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
+
+$ tchart --version
+1.0.0
+
+$ tchart skills.txt
+Usage: tchart [ --version | --help | input-data-filename output-tikz-filename ]
+
+$ tchart skills.txt skills.tikz
+$</code></pre>
                 </article>
                 
                 
                 <article>
                     <header><h1>Data File Format</h1></header>
                     <p>
-                    Input files consist of one or more lines where each line can be a comment, a blank line, a data
-                    line, a separator line, or a setting:
+                        Input files consist of one or more lines where each line can be a comment, a blank line, a data
+                        line, a separator line, or a setting:
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-file-format.jpg -->
-                        # A comment.
-                        
-                        # There are blanks lines above and below this line, and further down.
-                        
-                        # A data line.
-                        Objective-C  | lang | 2006.6 - 2013.8
-                        
-                        # A separator line.
-                        -------------------------------------
-                        
-                        # A setting.
-                        chart_width = 164.99
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-file-format.jpg --># A comment.
+
+# There are blanks lines above and below this line, and further down.
+
+# A data line.
+Objective-C  | lang | 2006.6 - 2013.8
+
+# A separator line.
+-------------------------------------
+
+# A setting.
+chart_width = 164.99
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-file-format.jpg" />
                     </figure>
@@ -252,17 +230,14 @@
                     
                     <header><h2>Comments</h2></header>
                     <p>
-                    Only line comments are supported (as opposed to multi-line block comments, such as C's /* ... */).  
-                    A comment can appear either on a line by itself or at the end of a line.  The comment delimiter is #.
+                        Only line comments are supported (as opposed to multi-line block comments, such as C's <code>/*...*/</code>).
+                        A comment can appear either on a line by itself or at the end of a line.  The comment delimiter is #.
                     </p>
-                    <pre><code>
-                        <!-- @tchart comments.jpg -->
-                        # This is a comment.
-                        Objective-C  | lang | 2006.6 - 2013.7               # This is another comment.
-                        C++          | lang | 2002 - 2008
-                        # C            | lang | 2001 - 2002 | 2005 - 2007     # This line is commented out.
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart comments.jpg --># This is a comment.
+Objective-C  | lang | 2006.6 - 2013.7               # This is another comment.
+C++          | lang | 2002 - 2008
+# C            | lang | 2001 - 2002 | 2005 - 2007     # This line is commented out.
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/comments.jpg" />
                     </figure>
@@ -272,17 +247,12 @@
                     <p>
                         Blank lines are ignored.
                     </p>
-                    <pre><code>
-                        <!-- @tchart blank-lines.jpg -->
-                        ```
-                        Objective-C  | lang | 2006.6 - 2013.7
-                        
-                        C++          | lang | 2002 - 2008
-                        
-                        C            | lang | 2001 - 2002 | 2005 - 2007
-                        ```
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart blank-lines.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+
+C++          | lang | 2002 - 2008
+
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/blank-lines.jpg" />
                     </figure>
@@ -298,13 +268,10 @@
                     <p>
                         A data line contains a description of the subject, which becomes the y axis label on the chart,
                         a style that defines how to draw the date range bars (i.e. what colour and shape the bars should
-                        be, etc.), and one or more date ranges.  Elements are separated by a pipe character (|).
+                        be, etc.), and one or more date ranges.  Elements are separated by a | (pipe character).
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-lines.jpg -->
-                        C            | lang | 2001 - 2002 | 2005 - 2007
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-lines.jpg -->C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-lines.jpg" />
                     </figure>
@@ -314,12 +281,9 @@
                     <p>
                         Descriptions can contain spaces, although leading and trailing spaces are ignored.
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-descriptions.jpg -->
-                        # The description below has leading, trailing, and embedded spaces.
-                           C & C++   | lang | 2001 - 2008       # The label used on the chart is "C & C++"
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-descriptions.jpg --># The description below has leading, trailing, and embedded spaces.
+   C & C++   | lang | 2001 - 2008       # The label used on the chart is "C & C++"
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-descriptions.jpg" />
                     </figure>
@@ -328,13 +292,10 @@
                         used in descriptions by escaping them with a \ (back slash).  \ can be used by escaping it 
                         with another \ .
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-escaping.jpg -->
-                        C\#         | lang | 2001 - 2007
-                        Bo\|\|ean   | lang | 2003 - 2005
-                        Back\\slash | lang | 2004 - 2008
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-escaping.jpg -->C\#         | lang | 2001 - 2007
+Bo\|\|ean   | lang | 2003 - 2005
+Back\\slash | lang | 2004 - 2008
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-escaping.jpg" />
                     </figure>
@@ -345,45 +306,40 @@
                         The bar style is the name of a TikZ style that must be defined in the TeX document that contains
                         the generated TikZ chart code.  For example, we might have a file, chart.txt, that contains:
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-styles.jpg -->
-                        C++          | lang | 2002 - 2008
-                        Linux        | os   | 2005 - 2010
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-styles.jpg -->C++          | lang | 2002 - 2008
+Linux        | os   | 2005 - 2010
+<!-- @end --></code></pre>
                     <p>
                         The TeX document that includes the chart code must define the 'lang' and 'os' TikZ styles, perhaps 
                         by including a separate file, or inline, as shown here:
                     </p>
-                    <pre><code> <!-- TeX -->
-                        ...
-                        
-                        % Style for programming language chart bars.
-                        \definecolor{lang_color}{rgb}{ 0.59, 0.59, 0.39 }
-                        \tikzset{ lang/.style = {
-                          rounded corners = 1mm,
-                          line width = 0.1pt,
-                          draw = lang_color,
-                          top color = lang_color,
-                          bottom color = lang_color
-                        }}
-                        
-                        % Style for operating systems chart bars.
-                        \definecolor{os_color}{rgb}{0.88, 0.88, 0.59}
-                        \tikzset{ os/.style = {
-                          rounded corners = 1mm,
-                          line width = 0.1pt,
-                          draw = os_color,
-                          top color = os_color,
-                          bottom color = os_color
-                        }}
-                        
-                        ...
-                        
-                        \input chart.tikz
-                        
-                        ...
-                    </code></pre>
+                    <pre><code><!-- TeX -->...
+
+% Style for programming language chart bars.
+\definecolor{lang_color}{rgb}{0.59, 0.59, 0.39}
+\tikzset{ lang/.style = {
+  rounded corners = 1mm,
+  line width = 0.1pt,
+  draw = lang_color,
+  top color = lang_color,
+  bottom color = lang_color
+}}
+
+% Style for operating systems chart bars.
+\definecolor{os_color}{rgb}{0.88, 0.88, 0.59}
+\tikzset{ os/.style = {
+  rounded corners = 1mm,
+  line width = 0.1pt,
+  draw = os_color,
+  top color = os_color,
+  bottom color = os_color
+}}
+
+...
+
+\input chart.tikz
+
+...</code></pre>
                     <figure>
                         <img src="images/data-line-styles.jpg" />
                     </figure>                
@@ -398,22 +354,19 @@
                     <p>
                         Date ranges can be specified in various ways:
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-dates.jpg -->
-                        2001.3.14 - 2001.11.22  | lang | 2001.3.14 - 2001.11.22   # date format is yyyy.mm.dd
-                        2001.3.14-2001.11.22    | lang | 2001.3.14-2001.11.22     # spaces around the '-' are optional
-                        2001.3 - 2001.11.22     | lang | 2001.3 - 2001.11.22      # same as: 2001.3.1 - 2001.11.22
-                        2001 - 2001.11.22       | lang | 2001 - 2001.11.22        # 2001.1.1 - 2001.11.22
-                        2001.3.14 - 2001.11     | lang | 2001.3.14 - 2001.11      # 2001.3.14 - 2001.11.30
-                        2001.3.14 - 2001        | lang | 2001.3.14 - 2001         # 2001.3.14 - 2001.12.31
-                        2001.3.14               | lang | 2001.3.14                # 2001.3.14 - 2001.3.4
-                        2001.3                  | lang | 2001.3                   # 2001.3.1 - 2001.3.31
-                        2001                    | lang | 2001                     # 2001.1.1 - 2001.12.31
-                        
-                        # make more room for the those long y axis labels, a setting that is described later
-                        y_axis_label_width = 40
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-dates.jpg -->2001.3.14 - 2001.11.22  | lang | 2001.3.14 - 2001.11.22   # date format is yyyy.mm.dd
+2001.3.14-2001.11.22    | lang | 2001.3.14-2001.11.22     # spaces around the '-' are optional
+2001.3 - 2001.11.22     | lang | 2001.3 - 2001.11.22      # same as: 2001.3.1 - 2001.11.22
+2001 - 2001.11.22       | lang | 2001 - 2001.11.22        # 2001.1.1 - 2001.11.22
+2001.3.14 - 2001.11     | lang | 2001.3.14 - 2001.11      # 2001.3.14 - 2001.11.30
+2001.3.14 - 2001        | lang | 2001.3.14 - 2001         # 2001.3.14 - 2001.12.31
+2001.3.14               | lang | 2001.3.14                # 2001.3.14 - 2001.3.4
+2001.3                  | lang | 2001.3                   # 2001.3.1 - 2001.3.31
+2001                    | lang | 2001                     # 2001.1.1 - 2001.12.31
+
+# make more room for the those long y axis labels, a setting that is described later
+y_axis_label_width = 40
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-dates.jpg" />
                     </figure>                
@@ -422,40 +375,30 @@
                         any bars.  If no dates are supplied, then the style may be omitted as well, although it 
                         will be ignored if included.
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-dates-optional.jpg -->
-                        Objective-C  | lang | 2006.6 - 2013.7
-                        C++          | lang
-                        C
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-dates-optional.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang
+C
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-dates-optional.jpg" />
                     </figure>                
                     <p>
                         The labels on the x axis are determined by the range of dates found in the data:
                     </p>
-                    <pre><code>
-                        <!-- @tchart data-line-dates-range1.jpg -->
-                        Every Year | lang | 2000 - 2009
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart data-line-dates-range1.jpg -->Every Year | lang | 2000 - 2009
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-dates-range1.jpg" />
                     </figure>
-                    <pre><code>
-                        <!-- @tchart data-line-dates-range5.jpg -->
-                        Every 5 Years | lang | 2000 - 2049
-                        <!-- @end -->
-                    </code></pre>
+                    <br>
+                    <pre><code><!-- @tchart data-line-dates-range5.jpg -->Every 5 Years | lang | 2000 - 2049
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-dates-range5.jpg" />
                     </figure>
-                    <pre><code>
-                        <!-- @tchart data-line-dates-range10.jpg -->
-                        Every 10 Years | lang | 2000 - 2050
-                        <!-- @end -->
-                    </code></pre>
+                    <br>
+                    <pre><code><!-- @tchart data-line-dates-range10.jpg -->Every 10 Years | lang | 2000 - 2050
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/data-line-dates-range10.jpg" />
                     </figure>
@@ -466,17 +409,14 @@
                         Separator lines are used to break subjects into sections by drawing a horizontal grid 
                         line on the chart.  They are specified by using a line starting with three dashes (minus signs), ---.
                     </p>
-                    <pre><code>
-                        <!-- @tchart separator-line.jpg -->
-                        Objective-C  | lang | 2006.6 - 2013.7
-                        ---                                     # Three dashes produce a separator.
-                        PostgreSQL   | db   | 2004 - 2006
-                        --- Anything after the first three dashes is ignored, so this is legal.
-                        OS X         | os   | 2006.6 - 2013.7
-                        -------------------------------------   # A full line of dashes.
-                        XCode        | tool | 2006.6 - 2013.7
-                        <!-- @end -->
-                    </code></pre>
+                    <pre><code><!-- @tchart separator-line.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+---                                     # Three dashes produce a separator.
+PostgreSQL   | db   | 2004 - 2006
+--- Anything after the first three dashes is ignored, so this is legal.
+OS X         | os   | 2006.6 - 2013.7
+-------------------------------------   # A full line of dashes.
+XCode        | tool | 2006.6 - 2013.7
+<!-- @end --></code></pre>
                     <figure>
                         <img src="images/separator-line.jpg" />
                     </figure>
@@ -489,186 +429,147 @@
                         so on.  These default values can be overridden in the data file using settings.  Settings are
                         of the form:
                     </p>
-                    <pre><code>
-                        name = value
-                    </code></pre>
+                    <pre><code>name = value</code></pre>
                     <p>
-                        Spaces before and after 'name' and 'value' are ignored.  The following two lines are equivalent:
+                        Spaces before and after <code>name</code> and <code>value</code> are ignored.  The following two
+                        lines are equivalent:
                     </p>
-                    <pre><code>
-                        chart_width=164.99
-                          chart_width   =   164.99
-                    </code></pre>
+                    <pre><code>chart_width=164.99
+  chart_width   =   164.99</code></pre>
                     <p>
                         Settings can appear anywhere in the data file, although putting them at the top is likely the best
                         idea.  If the same setting is specified more than once, the last value listed is the one that is
                         used:
                     </p>
-                    <pre><code>
-                        chart_width = 100
-                        chart_width = 60
-                        chart_width = 80        # This is the value that will be used.
-                    </code></pre>
+                    <pre><code>chart_width = 100
+chart_width = 60
+chart_width = 80        # This is the value that will be used.</code></pre>
                     
-                    <ul>
-                        <li>
-                            <p>
-                                <strong>chart_width</strong> (default 164.99mm) specifies the overall width of the chart.  This includes
-                                the y axis labels, the margins to the left and right of the x axis (the plot area), and the
-                                length of the x axis:
-                            </p>
-                            <pre><code>
-                                <!-- @tchart chart-width-narrow.jpg -->
-                                chart_width = 70
-                            
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/chart-width-narrow.jpg" />
-                            </figure>
-                            <pre><code>
-                                <!-- @tchart chart-width-wide.jpg -->
-                                chart_width = 140
-                            
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/chart-width-wide.jpg" />
-                            </figure>
-                        </li>
-    
-                        <li>
-                            <p>
-                                <strong>line_height</strong> (default 4.6mm) specifies the height of each row in the chart:
-                            </p>
-                            <pre><code>
-                                <!-- @tchart line-height-small.jpg -->
-                                line_height = 3
-                                
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/line-height-small.jpg" />
-                            </figure>
-                            <pre><code>
-                                <!-- @tchart line-height-large.jpg -->
-                                line_height = 9
-                                
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/line-height-large.jpg" />
-                            </figure>
-                        </li>
-    
-                        <li>
-                            <p>
-                                <strong>x_axis_label_width</strong> (default 10mm) specifies the width of the x axis labels.
-                                It is used by tchart to calculate the left and right margins around the plot
-                                area only (each margin is 1/2 x_axis_label_width):
-                            </p>
-                            <pre><code>
-                                <!-- @tchart x-axis-label-width-small.jpg -->
-                                x_axis_label_width = 10
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/x-axis-label-width-small.jpg" />
-                            </figure>
-                            <pre><code>
-                                <!-- @tchart x-axis-label-width-large.jpg -->
-                                x_axis_label_width = 50
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/x-axis-label-width-large.jpg" />
-                            </figure>
-                        </li>
-    
-                        <li>
-                            <p>
-                                <strong>x_axis_label_y_coordinate</strong> (default -3mm) specifies the distance from the x axis
-                                that the center of the x axis labels appear at:
-                            </p>
-                            <pre><code>
-                                <!-- @tchart x-axis-label-y-coordinate-above.jpg -->
-                                x_axis_label_y_coordinate = 10
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/x-axis-label-y-coordinate-above.jpg" />
-                            </figure>
-                            <pre><code>
-                                <!-- @tchart x-axis-label-y-coordinate-below.jpg -->
-                                x_axis_label_y_coordinate = -10
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/x-axis-label-y-coordinate-below.jpg" />
-                            </figure>
-                        </li>
-    
-                        <li>
-                            <p>
-                                <strong>y_axis_label_width</strong> (default 24mm) specifies the width of the y axis labels
-                                (the black marks after 'Objective-' and 'C++' in the chart below are generated 
-                                by TeX to indicate that text, for example, is too long for the space allocated
-                                for it):
-                            </p>
-                            <pre><code>
-                                <!-- @tchart y-axis-label-width-narrow.jpg -->
-                                y_axis_label_width = 5
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/y-axis-label-width-narrow.jpg" />
-                            </figure>
-                            <pre><code>
-                                <!-- @tchart y-axis-label-width-wide.jpg -->
-                                y_axis_label_width = 50    
-                                    
-                                Objective-C  | lang | 2006.6 - 2013.7
-                                C++          | lang | 2002 - 2008
-                                C            | lang | 2001 - 2002 | 2005 - 2007
-                                <!-- @end -->
-                            </code></pre>
-                            <figure>
-                                <img src="images/y-axis-label-width-wide.jpg" />
-                            </figure>
-                        </li>
-                    </ul>
+                    <header><h2>Setting: chart_width</h2></header>
+                    <p>
+                        Specifies the overall width of the chart (default 164.99mm).  This includes the y axis labels,
+                        the margins to the left and right of the x axis (the plot area), and the length of the x axis:
+                    </p>
+                    <pre><code><!-- @tchart chart-width-narrow.jpg -->chart_width = 70
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/chart-width-narrow.jpg" />
+                    </figure>
+                    <br>
+                    <pre><code><!-- @tchart chart-width-wide.jpg -->chart_width = 140
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/chart-width-wide.jpg" />
+                    </figure>
+
+                    
+                    <header><h2>Setting: line_height</h2></header>
+                    <p>
+                        Specifies the height of each row in the chart (default 4.6mm):
+                    </p>
+                    <pre><code><!-- @tchart line-height-small.jpg -->line_height = 3
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/line-height-small.jpg" />
+                    </figure>
+                    <br>
+                    <pre><code><!-- @tchart line-height-large.jpg -->line_height = 9
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/line-height-large.jpg" />
+                    </figure>
+
+
+                    <header><h2>Setting: x_axis_label_width</h2></header>
+                    <p>
+                        Specifies the width of the x axis labels (default 10mm).  It is used by tchart to calculate the
+                        left and right margins around the plot area only (each margin is 1/2 x_axis_label_width):
+                    </p>
+                    <pre><code><!-- @tchart x-axis-label-width-small.jpg -->x_axis_label_width = 10
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/x-axis-label-width-small.jpg" />
+                    </figure>
+                    <br>
+                    <pre><code><!-- @tchart x-axis-label-width-large.jpg -->x_axis_label_width = 50
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/x-axis-label-width-large.jpg" />
+                    </figure>
+
+            
+                    <header><h2>Setting: x_axis_label_y_coordinate</h2></header>
+                    <p>
+                        Specifies the distance from the x axis that the center of the x axis labels appear at (default -3mm):
+                    </p>
+                    <pre><code><!-- @tchart x-axis-label-y-coordinate-above.jpg -->x_axis_label_y_coordinate = 10
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/x-axis-label-y-coordinate-above.jpg" />
+                    </figure>
+                    <br>
+                    <pre><code><!-- @tchart x-axis-label-y-coordinate-below.jpg -->x_axis_label_y_coordinate = -10
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/x-axis-label-y-coordinate-below.jpg" />
+                    </figure>
+                    
+                    
+                    <header><h2>Setting: y_axis_label_width</h2></header>
+                    <p>
+                        Specifies the width of the y axis labels (default 24mm):
+                    </p>
+                    <pre><code><!-- @tchart y-axis-label-width-narrow.jpg -->y_axis_label_width = 20
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/y-axis-label-width-narrow.jpg" />
+                    </figure>
+                    <br>
+                    <pre><code><!-- @tchart y-axis-label-width-wide.jpg -->y_axis_label_width = 50    
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/y-axis-label-width-wide.jpg" />
+                    </figure>
                 </article>
             </section>
         </div>
@@ -691,6 +592,7 @@
                         <li>
                             <a href="http://www.tug.org">TeX</a>,
                             <a href="http://sourceforge.net/projects/pgf">PGF/TikZ</a>
+                            <a href="http://tug.org/mactex">MacTeX</a>
                         </li>
                         <li>
                             <a href="http://www.ruby-lang.org">Ruby</a>,

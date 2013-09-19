@@ -2,8 +2,9 @@
  * General.
  */
 
-html {
-    font-family: sans-serif;
+body {
+    font-family: "Geneva", sans-serif;
+    font-weight: 100;
 }
 
 /* link decorations */
@@ -30,6 +31,32 @@ a:hover {
     width: 800px;
 }
 
+.center-content-horizontally {
+    width: inherit;
+
+    display: box;
+    box-pack: center;
+
+    display: -webkit-box;
+    -webkit-box-pack: center;
+
+    display:-moz-box;
+    -moz-box-pack: center;
+}
+
+.center-content-vertically {
+    height: inherit;
+
+    display: box;
+    box-align: center;
+
+    display: -webkit-box;
+    -webkit-box-align: center;
+
+    display:-moz-box;
+    -moz-box-align: center;
+}
+
 
 
 /*
@@ -41,29 +68,19 @@ a:hover {
 }
 
 .page-header {
-    height: 80px;              /* so that .center-vertically works */
+    height: 6em;                   /* so that .center-vertically works */
 }
 
 .page-header .logo {
     font-family: monospace;
     font-size: 400%;
     font-weight: 800;
-    letter-spacing: 6px;
+    letter-spacing: 0.2em;
 }
 
 .page-header .version {
     float: right;
     font-size: 85%;
-}
-
-.center-vertically {
-    height: inherit;
-
-    display: box;
-    box-align: center;
-
-    display: -webkit-box;
-    -webkit-box-align: center;
 }
 
 
@@ -73,8 +90,79 @@ a:hover {
  */
 
 .page-body {
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+
+.page-body article {
+    margin-bottom: 4.5em;
+}
+
+.page-body h1 {
+    color: #ac9c81;
+    font-size: 200%;
+    font-weight: 100;
+    margin-bottom: 0.6em;
+    text-transform: uppercase;
+}
+
+.page-body h2 {
+    font-size: 90%;
+    font-weight: 600;
+    margin-top: 3em;
+}
+
+.page-body p {
+    line-height: 1.6em;
+    word-spacing: 0.05em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.page-body pre {
+    background-color: rgba(201, 187, 163, 0.08);
+    border: 1px solid #d6d6d6;
+    box-shadow: 2px 2px 6px #b2b2b2;
+    margin-left: 2em;
+    margin-right: 2em;
+    overflow: auto;                 /* make it easy to select code with mouse for copy & paste */
+    padding: 10px;
+    padding-left: 14px;
+}
+
+.page-body code {
+    font-family: monospace;
+    font-size: 110%;
+}
+
+.page-body pre code {
+    font-size: 95%;
+    line-height: 1.2;
+}
+
+.page-body figure {
+    border: 1px solid #d6d6d6;
+    box-shadow: 2px 2px 6px #b2b2b2;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.page-body ul {
+    line-height: 1.6em;
+    list-style: disc inside none;
+}
+
+.page-body ol {
+    list-style: decimal inside none;
+}
+
+.page-body ol li {
+    margin-bottom: 3em;
 }
 
 
