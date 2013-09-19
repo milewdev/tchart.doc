@@ -1,9 +1,13 @@
+@import "reset.css";
+
+
+
 /*
  * General.
  */
 
 body {
-    font-family: "Geneva", sans-serif;
+    font-family: "Palatino", sans-serif;
     font-weight: 100;
 }
 
@@ -16,7 +20,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Clearfix (http://css-tricks.com/snippets/css/clear-fix/). */
+/* http://css-tricks.com/snippets/css/clear-fix/ */
 .clearfix:after {
 	visibility: hidden;
 	display: block;
@@ -25,7 +29,7 @@ a:hover {
 	height: 0;
 }
 
-/* Fixed-width page content. */
+/* fixed-width page content */
 .fixed-width {
     margin: 0 auto;
     width: 800px;
@@ -63,22 +67,22 @@ a:hover {
  * Page header.
  */
 
-.page-header-background {
+.page-header {
     background-color: #c9bba3;
 }
 
-.page-header {
-    height: 6em;                   /* so that .center-vertically works */
+.page-header-content {
+    height: 5em;    /* require a height so that .center-content-vertically works */
 }
 
-.page-header .logo {
+.page-header-content .logo {
     font-family: monospace;
     font-size: 400%;
     font-weight: 800;
     letter-spacing: 0.2em;
 }
 
-.page-header .version {
+.page-header-content .version {
     float: right;
     font-size: 85%;
 }
@@ -100,6 +104,7 @@ a:hover {
 
 .page-body h1 {
     color: #ac9c81;
+    font-family: Copperplate;
     font-size: 200%;
     font-weight: 100;
     margin-bottom: 0.6em;
@@ -107,9 +112,8 @@ a:hover {
 }
 
 .page-body h2 {
-    font-size: 90%;
-    font-weight: 600;
-    margin-top: 3em;
+    font-weight:800;
+    margin-top: 4em;
 }
 
 .page-body p {
@@ -117,6 +121,7 @@ a:hover {
     word-spacing: 0.05em;
     margin-top: 1em;
     margin-bottom: 1em;
+    text-align: justify;
 }
 
 .page-body pre {
@@ -125,18 +130,17 @@ a:hover {
     box-shadow: 2px 2px 6px #b2b2b2;
     margin-left: 2em;
     margin-right: 2em;
-    overflow: auto;                 /* make it easy to select code with mouse for copy & paste */
-    padding: 10px;
-    padding-left: 14px;
+    overflow: auto;     /* make it easy to select code with mouse for copy & paste */
+    padding: 1em;
+    padding-left: 1.2em;
 }
 
 .page-body code {
     font-family: monospace;
-    font-size: 110%;
+    font-size: 95%;
 }
 
 .page-body pre code {
-    font-size: 95%;
     line-height: 1.2;
 }
 
@@ -147,18 +151,20 @@ a:hover {
     margin-right: 2em;
     margin-top: 1em;
     margin-bottom: 1em;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 1.8em;
+    padding-bottom: 1em;
     text-align: center;
 }
 
 .page-body ul {
     line-height: 1.6em;
     list-style: disc inside none;
+    margin-left: 0.2em;
 }
 
 .page-body ol {
     list-style: decimal inside none;
+    margin-left: 0.2em;
 }
 
 .page-body ol li {
@@ -171,29 +177,38 @@ a:hover {
  * Page footer.
  */
 
-.page-footer-background {
+.page-footer {
     background-color: #ededed;
 }
 
-.page-footer {
+.page-footer-content {
     color: #6a6a6a;
-    font-size: 80%;
-    padding-bottom: 20px;
+    font-size: 90%;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-.page-footer .nav {
-    float: left;
+.page-footer-content nav div {
     line-height: 1.5;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 150px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+    width: 10em;
 }
 
-.page-footer h1 {
+.page-footer-content nav div:first-child {
+    text-align: right;
+}
+
+.page-footer-content nav div h1 {
     font-weight: 800;
-    margin-bottom: 6px;
+    margin-bottom: 0.4em;
 }
 
-.copyright {
-    clear: both;
+.page-footer-content .copyright {
+    font-size: 75%;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    text-align: center;
 }
