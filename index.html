@@ -22,7 +22,7 @@
         <div class="page-body fixed-width">
             <section>
                 <article>
-                    <header><h1>What is it?</h1></header>
+                    <header><h1><a name="what-is-it" href="#what-is-it">What is it?</a></h1></header>
                     <p>
                         tchart is a command line program that generates TikZ code to plot date-based data.
                         For example, this:
@@ -51,7 +51,7 @@ VS           | tool | 2001 - 2004<!-- @end --></code></pre>
                 
                 
                 <article>
-                    <header><h1>Requirements</h1></header>
+                    <header><h1><a name="requirements" href="#requirements">Requirements</a></h1></header>
                     <ul>
                         <li><a href="https://www.ruby-lang.org">Ruby 2</a></li>
                         <li>A TeX installation (e.g. <a href="http://tug.org/mactex">MacTeX</a>) to render generated charts.</li>
@@ -60,7 +60,7 @@ VS           | tool | 2001 - 2004<!-- @end --></code></pre>
             
                 
                 <article>
-                    <header><h1>Installation</h1></header>
+                    <header><h1><a name="installation" href="#installation">Installation</a></h1></header>
                     <pre><code><!-- Shell -->$ gem install tchart
 ...
 $ tchart --version
@@ -69,7 +69,7 @@ $ tchart --version
                 
                 
                 <article>
-                    <header><h1>Quick Start</h1></header>
+                    <header><h1><a name="quick-start" href="#quick-start">Quick Start</a></h1></header>
                     <ol>
                         <li>
                             <p>
@@ -164,7 +164,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                 
                 
                 <article>
-                    <header><h1>Usage</h1></header>
+                    <header><h1><a name="usage" href="#usage">Usage</a></h1></header>
                     <pre><code><!-- Shell -->$ tchart [ --help | --version | input-data-filename output-tikz-filename ]</code></pre>
                     <p>
                         <code>--help</code> prints a usage message and exits.  <code>-h</code> can also be used.
@@ -204,7 +204,7 @@ $</code></pre>
                 
                 
                 <article>
-                    <header><h1>Data File Format</h1></header>
+                    <header><h1><a name="data-file-format" href="#data-file-format">Data File Format</a></h1></header>
                     <p>
                         Input files consist of one or more lines where each line can be a comment, a blank line, a data
                         line, a separator line, or a setting:
@@ -227,7 +227,7 @@ chart_width = 164.99
                     </figure>
     
                     
-                    <header><h2>Comments</h2></header>
+                    <header><h2><a name="comments" href="#comments">Comments</a></h2></header>
                     <p>
                         Only line comments are supported (as opposed to multi-line block comments, such as C's <code>/*...*/</code>).
                         A comment can appear either on a line by itself or at the end of a line.  The comment delimiter is #.
@@ -242,7 +242,7 @@ C++          | lang | 2002 - 2008
                     </figure>
     
                     
-                    <header><h2>Blank Lines</h2></header>
+                    <header><h2><a name="blank-lines" href="#blank-lines">Blank Lines</a></h2></header>
                     <p>
                         Blank lines are ignored.
                     </p>
@@ -257,7 +257,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
     
                     
-                    <header><h2>Data Lines</h2></header>
+                    <header><h2><a name="data-lines" href="#data-lines">Data Lines</a></h2></header>
                     <p>
                         A data line represents something, a subject, that has a set of date ranges to be plotted on a row
                         on the chart.  For example, I may have written C++ programs from 2001 to 2003, and 2004 to 2007,
@@ -276,7 +276,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
                     
                     
-                    <header><h2>Data Line Descriptions</h2></header>
+                    <header><h2><a name="data-line-descriptions" href="#data-line-descriptions">Data Line Descriptions</a></h2></header>
                     <p>
                         Descriptions can contain spaces, although leading and trailing spaces are ignored.
                     </p>
@@ -300,7 +300,7 @@ Back\\slash | lang | 2004 - 2008
                     </figure>
                     
                     
-                    <header><h2>Data Line Styles</h2></header>
+                    <header><h2><a name="data-line-styles" href="#data-line-styles">Data Line Styles</a></h2></header>
                     <p>
                         The bar style is the name of a TikZ style that must be defined in the TeX document that contains
                         the generated TikZ chart code.  For example, we might have a file, chart.txt, that contains:
@@ -349,7 +349,7 @@ Linux        | os   | 2005 - 2010
                     </p>
     
                     
-                    <header><h2>Data Line Dates</h2></header>
+                    <header><h2><a name="data-line-dates" href="#data-line-dates">Data Line Dates</a></h2></header>
                     <p>
                         Date ranges can be specified in various ways:
                     </p>
@@ -403,7 +403,7 @@ C
                     </figure>
     
     
-                    <header><h2>Separator Lines</h2></header>
+                    <header><h2><a name="separator-lines" href="#separator-lines">Separator Lines</a></h2></header>
                     <p>
                         Separator lines are used to break subjects into sections by drawing a horizontal grid 
                         line on the chart.  They are specified by using a line starting with three dashes (minus signs), ---.
@@ -421,7 +421,7 @@ XCode        | tool | 2006.6 - 2013.7
                     </figure>
     
                     
-                    <header><h2>Settings</h2></header>
+                    <header><h2><a name="settings" href="#settings">Settings</a></h2></header>
                     <p>
                         tchart makes no attempt to determine how much space text in the generated chart occupies and so
                         it uses default values for the overall width of the chart, the length of the y axis labels, and
@@ -433,18 +433,27 @@ XCode        | tool | 2006.6 - 2013.7
                         Spaces before and after <code>name</code> and <code>value</code> are ignored.  The following two
                         lines are equivalent:
                     </p>
-                    <pre><code>chart_width=164.99
+                    <pre><code>chart_width=100.5
   chart_width   =   164.99</code></pre>
                     <p>
-                        Settings can appear anywhere in the data file, although putting them at the top is likely the best
-                        idea.  If the same setting is specified more than once, the last value listed is the one that is
-                        used:
+                        Setting values are always in millimeters.  They can appear anywhere in the data file, although
+                        putting them at the top is likely the best place for them.  If the same setting is specified more
+                        than once, the last value listed is the one that is used:
                     </p>
                     <pre><code>chart_width = 100
 chart_width = 60
 chart_width = 80        # This is the value that will be used.</code></pre>
+                    <p>
+                        The settings and their default values are as follows:
+                    </p>
+                    <pre><code><a href="#setting-chart-width">chart_width</a>                  = 164.99
+<a href="#setting-line-height">line_height</a>                  = 4.6
+<a href="#setting-x-axis-label-width">x_axis_label_width</a>           = 10
+<a href="#setting-x-axis-label-y-coordinate">x_axis_label_y_coordinate</a>    = -3
+<a href="#setting-y-axis-label-width">y_axis_label_width</a>           = 24</code></pre>
                     
-                    <header><h2>Setting: chart_width</h2></header>
+                    
+                    <header><h2><a name="setting-chart-width" href="#setting-chart-width">Setting: chart_width</a></h2></header>
                     <p>
                         Specifies the overall width of the chart (default 164.99mm).  This includes the y axis labels,
                         the margins to the left and right of the x axis (the plot area), and the length of the x axis:
@@ -470,7 +479,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
 
                     
-                    <header><h2>Setting: line_height</h2></header>
+                    <header><h2><a name="setting-line-height" href="#setting-line-height">Setting: line_height</a></h2></header>
                     <p>
                         Specifies the height of each row in the chart (default 4.6mm):
                     </p>
@@ -495,7 +504,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
 
 
-                    <header><h2>Setting: x_axis_label_width</h2></header>
+                    <header><h2><a name="setting-x-axis-label-width" href="#setting-x-axis-label-width">Setting: x_axis_label_width</a></h2></header>
                     <p>
                         Specifies the width of the x axis labels (default 10mm).  It is used by tchart to calculate the
                         left and right margins around the plot area only (each margin is 1/2 x_axis_label_width):
@@ -521,7 +530,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
 
             
-                    <header><h2>Setting: x_axis_label_y_coordinate</h2></header>
+                    <header><h2><a name="setting-x-axis-label-y-coordinate" href="#setting-x-axis-label-y-coordinate">Setting: x_axis_label_y_coordinate</a></h2></header>
                     <p>
                         Specifies the distance from the x axis that the center of the x axis labels appear at (default -3mm):
                     </p>
@@ -546,7 +555,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </figure>
                     
                     
-                    <header><h2>Setting: y_axis_label_width</h2></header>
+                    <header><h2><a name="setting-y-axis-label-width" href="#setting-y-axis-label-width">Setting: y_axis_label_width</a></h2></header>
                     <p>
                         Specifies the width of the y axis labels (default 24mm):
                     </p>
@@ -587,7 +596,7 @@ C            | lang | 2001 - 2002 | 2005 - 2007
                     </div>
                     
                     <div>
-                        <h1>Thanks</h1>
+                        <h1>Thank You</h1>
                         <ul>
                             <li>
                                 <a href="http://www.tug.org">TeX</a>,
