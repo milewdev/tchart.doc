@@ -1,0 +1,5 @@
+### Run a local web server during project web site development
+```Shell
+$ cd /project/web/source/directory
+$ python -m SimpleHTTPServer 8080
+```
