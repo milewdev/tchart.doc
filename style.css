@@ -72,7 +72,7 @@ a:hover {
 }
 
 .page-header-content {
-    height: 5em;    /* require a height so that .center-content-vertically works */
+    height: 6em;    /* require a height so that .center-content-vertically works */
 }
 
 .page-header-content .logo {
@@ -83,8 +83,13 @@ a:hover {
 }
 
 .page-header-content .version {
-    float: right;
-    font-size: 85%;
+    font-size: 80%;
+}
+
+.page-header-content img {
+    position: relative;
+    left: 700px;
+    top: -50px;
 }
 
 
@@ -93,16 +98,16 @@ a:hover {
  * Page body.
  */
 
-.page-body {
+.page-body-content {
     margin-top: 4em;
     margin-bottom: 4em;
 }
 
-.page-body article {
+.page-body-content article {
     margin-bottom: 4.5em;
 }
 
-.page-body h1 {
+.page-body-content h1 {
     color: #ac9c81;
     font-family: Copperplate;
     font-size: 200%;
@@ -111,12 +116,12 @@ a:hover {
     text-transform: uppercase;
 }
 
-.page-body h2 {
+.page-body-content h2 {
     font-weight: 800;
     margin-top: 4em;
 }
 
-.page-body p {
+.page-body-content p {
     line-height: 1.6em;
     word-spacing: 0.05em;
     margin-top: 1em;
@@ -124,7 +129,7 @@ a:hover {
     text-align: justify;
 }
 
-.page-body pre {
+.page-body-content pre {
     background-color: rgba(201, 187, 163, 0.08);
     border: 1px solid #d6d6d6;
     box-shadow: 2px 2px 6px #b2b2b2;
@@ -135,16 +140,16 @@ a:hover {
     padding-left: 1.2em;
 }
 
-.page-body code {
+.page-body-content code {
     font-family: monospace;
     font-size: 95%;
 }
 
-.page-body pre code {
+.page-body-content pre code {
     line-height: 1.2;
 }
 
-.page-body figure {
+.page-body-content figure {
     border: 1px solid #d6d6d6;
     box-shadow: 2px 2px 6px #b2b2b2;
     margin-left: 2em;
@@ -156,18 +161,18 @@ a:hover {
     text-align: center;
 }
 
-.page-body ul {
+.page-body-content ul {
     line-height: 1.6em;
     list-style: disc inside none;
     margin-left: 0.2em;
 }
 
-.page-body ol {
+.page-body-content ol {
     list-style: decimal inside none;
     margin-left: 0.2em;
 }
 
-.page-body ol li {
+.page-body-content ol li {
     margin-bottom: 3em;
 }
 
