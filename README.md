@@ -62,7 +62,6 @@ branch, gh-pages.  To do a deploy, simply do 'git push'.
 
   ```
                     <pre><code><!-- @tchart chart-width-narrow.jpg -->chart_width = 70
-
 Objective-C  | lang | 2006.6 - 2013.7
 C++          | lang | 2002 - 2008
 C            | lang | 2001 - 2002 | 2005 - 2007
