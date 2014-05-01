@@ -58,10 +58,12 @@ branch, gh-pages.  To do a deploy, simply do 'git push'.
 - ./_build will convert embedded tchart specs in index.html into .jpg files.  The embedded tchart specs
   need to be between <!-- @tchart filename.jpg --> and <!-- @end -->.  For example:
 
+  ```
   <!-- @tchart tutorial.jpg -->Objective-C  | lang | 2006.6 - 2013.7
   C++          | lang | 2002 - 2008
   C            | lang | 2001 - 2002 | 2005 - 2007
   <!-- @end -->
+  ```
 
   Search index.html for @tchart to find all of the embedded charts.  Look at generate_charts() in the Rakefile
   to see how the embedded charts are extracted and converted.
