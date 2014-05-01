@@ -55,14 +55,23 @@ $ rm -r ~/work/tchart.doc    # and possibly rm -r ~/work if it is now empty
 - tchart.doc is hosted on [GitHub pages](https://pages.github.com).  As a result, there is only one git 
 branch, gh-pages.  To do a deploy, simply do 'git push'.
 
-- ./_build will convert embedded tchart specs in index.html into .jpg files.  The embedded tchart specs
-  need to be between <!-- @tchart filename.jpg --> and <!-- @end -->.  For example:
+- ./_build will convert embedded tchart specs in index.html into .jpg files that are themselves included
+  in index.html.  The embedded tchart specs need to be between <!-- @tchart filename.jpg --> and
+  <!-- @end -->.  Here is a typical example of a tchart spec in index.html and a link to the jpg
+  file that is produced from it:
 
   ```
-  <!-- @tchart tutorial.jpg -->Objective-C  | lang | 2006.6 - 2013.7
-  C++          | lang | 2002 - 2008
-  C            | lang | 2001 - 2002 | 2005 - 2007
-  <!-- @end -->
+                    <pre><code><!-- @tchart separator-line.jpg -->Objective-C  | lang | 2006.6 - 2013.7
+---                                     # Three dashes produce a separator.
+PostgreSQL   | db   | 2004 - 2006
+--- Anything after the first three dashes is ignored, so this is legal.
+OS X         | os   | 2006.6 - 2013.7
+-------------------------------------   # A full line of dashes.
+XCode        | tool | 2006.6 - 2013.7
+<!-- @end --></code></pre>
+                    <figure>
+                        <img src="images/separator-line.jpg" />
+                    </figure>
   ```
 
   Search index.html for @tchart to find all of the embedded charts.  Look at generate_charts() in the Rakefile
