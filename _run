@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Start a python web server in the background and capture its PID.
+# Wrapping the python call in () hides SimpleHTTPServer log output.
+(python -m SimpleHTTPServer 8080) 2>&1 > /dev/null &
+server_pid=$!
+
+# When this shell exists, terminate the web server (BUG: will not work
+# if signal sent before we reach this line).  The 'sleep 1' hack usually
+# allows shell background process termination messages to appear before
+# the shell prompt, rather than after, which makes it look like something
+# is still running.
+trap "kill -15 $server_pid 2>&1 > /dev/null ; sleep 1 ; echo" EXIT
+
+# Display explanation and instructions.
+echo Started local web server at http://localhost:8080
+echo Press Ctrl-C to stop.
+echo
+
+# Wait until Ctrl-C.  Redirecting output into /dev/null hides complaints
+# from the terminating processes.  Mostly.
+wait $server_pid 2>&1 > /dev/null
