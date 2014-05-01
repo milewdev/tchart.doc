@@ -61,16 +61,14 @@ branch, gh-pages.  To do a deploy, simply do 'git push'.
   file that is produced from it:
 
   ```
-                    <pre><code><!-- @tchart separator-line.jpg -->Objective-C  | lang | 2006.6 - 2013.7
----                                     # Three dashes produce a separator.
-PostgreSQL   | db   | 2004 - 2006
---- Anything after the first three dashes is ignored, so this is legal.
-OS X         | os   | 2006.6 - 2013.7
--------------------------------------   # A full line of dashes.
-XCode        | tool | 2006.6 - 2013.7
+                    <pre><code><!-- @tchart chart-width-narrow.jpg -->chart_width = 70
+
+Objective-C  | lang | 2006.6 - 2013.7
+C++          | lang | 2002 - 2008
+C            | lang | 2001 - 2002 | 2005 - 2007
 <!-- @end --></code></pre>
                     <figure>
-                        <img src="images/separator-line.jpg" />
+                        <img src="images/chart-width-narrow.jpg" />
                     </figure>
   ```
 
