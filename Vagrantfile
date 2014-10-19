@@ -1,5 +1,5 @@
 VAGRANTFILE_API_VERSION         = "2"
-PROJECT_SOURCE_URL              = "https://github.com/milewgit/tchart.doc.git"
+PROJECT_SOURCE_URL              = "https://github.com/milewdev/tchart.doc.git"
 PROJECT_VM_PATH                 = "/Users/vagrant/Documents/tchart.doc"
 SYNCED_HOST_HOME_FOLDER         = { host: "~/", guest: "/.vagrant_host_home" }
 SYNCED_DOWNLOAD_CACHE_FOLDER    = { host: "cache", guest: "/.vagrant_download_cache" }
