@@ -3,8 +3,8 @@ The user documentation for tchart, a command line utility that generates TikZ co
 
 ### What where?
 
-- The tchart.doc site is [here](http://milewgit.github.io/tchart.doc/).
-- The tchart source code is [here](https://github.com/milewgit/tchart).
+- The tchart.doc site is [here](http://milewdev.github.io/tchart.doc/).
+- The tchart source code is [here](https://github.com/milewdev/tchart).
 
 ### Development Setup
 
@@ -20,7 +20,7 @@ In a terminal window on the host machine:
 ```
 $ mkdir -p ~/work/tchart.doc
 $ cd ~/work/tchart.doc
-$ curl -fsSL https://raw.github.com/milewgit/tchart.doc/gh-pages/Vagrantfile -o Vagrantfile
+$ curl -fsSL https://raw.github.com/milewdev/tchart.doc/gh-pages/Vagrantfile -o Vagrantfile
 $ vagrant up --provider=vmware_fusion
 ...
 ```
